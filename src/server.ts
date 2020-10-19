@@ -1,10 +1,20 @@
-import express from 'express'
+import express, { NextFunction } from 'express'
 
 
 const app: express.Application = express()
 
-app.get('/', (req, res) => {
-    res.status(234).send('Hello World!')
+app.get('/', (req: express.Request, res: express.Response) => {
+    res.status(200).send('Hello World!')
+})
+
+app.get('/get-number', (req: express.Request, res: express.Response) => {
+    res.send({ drawn: Math.floor(100 * Math.random()) })
+})
+
+app.get('/throw-error', (req: express.Request, res: express.Response, next: NextFunction) => {
+    const err = new Error('some error message')
+
+    next(err)
 })
 
 
