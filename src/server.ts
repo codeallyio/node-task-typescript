@@ -11,8 +11,15 @@ app.get('/get-number', (req: express.Request, res: express.Response) => {
     res.send({ drawn: Math.floor(100 * Math.random()) })
 })
 
+app.get('/throw-error-with-status', (req: express.Request, res: express.Response, next: NextFunction) => {
+    const err = new myError('some error message')
+    err.status = 418
+
+    next(err)
+})
+
 app.get('/throw-error', (req: express.Request, res: express.Response, next: NextFunction) => {
-    const err = new Error('some error message')
+    const err = new myError('some error message')
 
     next(err)
 })
