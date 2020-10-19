@@ -1,4 +1,6 @@
 import express, { NextFunction } from 'express'
+import { catchErrorMiddleware, notFoundMiddleware } from './middleware'
+import { myError } from './utils'
 
 
 const app: express.Application = express()
@@ -24,6 +26,8 @@ app.get('/throw-error', (req: express.Request, res: express.Response, next: Next
     next(err)
 })
 
+app.use(notFoundMiddleware)
+app.use(catchErrorMiddleware)
 
 const PORT = process.env.PORT || 3000
 
