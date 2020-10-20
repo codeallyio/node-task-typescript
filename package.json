@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "tsc && node build/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register test/*.ts --timeout 10000"
   },
   "author": "Strove",
   "license": "ISC",
@@ -16,5 +16,13 @@
     "express": "^4.17.1",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.0",
+    "ts-node": "^9.0.0"
   }
 }
