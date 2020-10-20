@@ -53,4 +53,44 @@ describe('Server HTTP tests', () => {
                 })
         })
     })
+
+    describe('GET /throw-error', () => {
+        const path = '/throw-error'
+
+        it('it should return a response with default (500) status code', (done) => {
+            chai.request(server)
+                .get(path)
+                .end((err, res) => {
+                    res.should.have.status(500)
+                    res.body.should.be.a('object')
+                    res.body.should.have.property('status')
+                    res.body.status.should.be.a('string').eql('error')
+                    res.body.should.have.property('message')
+                    res.body.message.should.be.a('string').eql('some error message with default status')
+                    res.body.should.have.property('path')
+                    res.body.path.should.be.a('string').eql(path)
+                    done()
+                })
+        })
+    })
+
+    describe('GET /throw-error-with-status', () => {
+        const path = '/throw-error-with-status'
+
+        it('it should return a response with predefined (418) status code', (done) => {
+            chai.request(server)
+                .get(path)
+                .end((err, res) => {
+                    res.should.have.status(418)
+                    res.body.should.be.a('object')
+                    res.body.should.have.property('status')
+                    res.body.status.should.be.a('string').eql('error')
+                    res.body.should.have.property('message')
+                    res.body.message.should.be.a('string').eql('some error message with 418 status')
+                    res.body.should.have.property('path')
+                    res.body.path.should.be.a('string').eql(path)
+                    done()
+                })
+        })
+    })
 })
