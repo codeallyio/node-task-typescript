@@ -39,7 +39,7 @@ describe('Server HTTP tests', () => {
     describe('GET /non-valid-endpoint', () => {
         const path = '/non-valid-endpoint'
 
-        it('it should receive number between 0 and 99', (done) => {
+        it('it should build the response using NOT-FOUND middleware', (done) => {
             chai.request(server)
                 .get(path)
                 .end((err, res) => {
