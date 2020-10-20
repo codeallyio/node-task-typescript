@@ -35,4 +35,22 @@ describe('Server HTTP tests', () => {
                 })
         })
     })
+
+    describe('GET /non-valid-endpoint', () => {
+        const path = '/non-valid-endpoint'
+
+        it('it should receive number between 0 and 99', (done) => {
+            chai.request(server)
+                .get(path)
+                .end((err, res) => {
+                    res.should.have.status(404)
+                    res.body.should.be.a('object')
+                    res.body.should.have.property('status')
+                    res.body.status.should.be.a('string').eql('path not found')
+                    res.body.should.have.property('path')
+                    res.body.path.should.be.a('string').eql(path)
+                    done()
+                })
+        })
+    })
 })
