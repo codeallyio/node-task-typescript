@@ -1,3 +1,3 @@
 {
-    "init": "cd node-task-typescript && yarn && sudo sh init.sh && yarn test"
+    "init": "cd node-task-typescript && yarn && sh init.sh && yarn test"
 }
