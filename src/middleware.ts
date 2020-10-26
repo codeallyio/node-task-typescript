@@ -4,16 +4,6 @@ import { errorResponse, notFoundResponse, myError } from './utils'
 // don't forget you're doing TYPE-script ;)
 
 
-export const notFoundMiddleware = (req: express.Request, res: express.Response) => {
-    const result: notFoundResponse = { status: 'path not found', path: req.originalUrl }
+export const notFoundMiddleware = () => { }
 
-    res.status(404).send(result)
-}
-
-export const catchErrorMiddleware = (err: myError, req: Request, res: Response, next: NextFunction) => {
-    const result: errorResponse = { status: 'error', message: err.message, path: req.originalUrl }
-
-    res.statusCode = err.status || 500
-
-    res.send(result)
-}
+export const catchErrorMiddleware = () => { }
