@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "tsc && node build/src/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "mocha -r ts-node/register test/*.ts --timeout 10000"
+    "test": "mocha -r ts-node/register test/*.ts --timeout 10000 --exit --reporter mocha-simple-html-reporter --reporter-options output=test-report.html"
   },
   "author": "Strove",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^8.2.0",
+    "mocha-simple-html-reporter": "^1.1.0",
     "ts-node": "^9.0.0"
   }
 }
